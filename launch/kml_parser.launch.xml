@@ -1,0 +1,13 @@
+<launch>
+
+    <arg name="kml_parser_param_path" default="$(find-pkg-share kml_parser)/config/kml_parser.param.yaml"/>
+    <arg name="rviz_config" default="$(find-pkg-share kml_parser)/rviz/kml_parser.rviz"/>
+
+    <node pkg="kml_parser" exec="kml_parser_node" name="kml">
+        <param from="$(var kml_parser_param_path)"/>
+    </node>
+
+    <node pkg="rviz2" exec="rviz2" name="rviz2" output="screen" args="-d $(var rviz_config)"/>
+
+</launch>
+
